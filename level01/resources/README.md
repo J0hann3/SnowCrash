@@ -1,6 +1,4 @@
 # Level01
-- Password level01: `x24ti5gi3x0ol2eh4esiuxias`
-
 ## Step by step
 - Search in every regular files if it contains the word `flag01`
 ```bash
