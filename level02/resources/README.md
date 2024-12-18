@@ -17,7 +17,7 @@
   ```
 - With the command `tshark`, I parse data send in the communications
   ```bash
-  > tshark -r /test/level02.pcap -T fields -e tcp.payload | xxd -r -p
+  > tshark -r /Flag02/level02.pcap -T fields -e tcp.payload | xxd -r -p
 
   ��%��%��&���� ��#��'��$��&���� ��#��'��$�� ����#����'�������� 38400,38400����#SodaCan:0����'DISPLAYSodaCan:0����xterm��������"������!������"��"bb   B�
 
@@ -34,7 +34,7 @@
   ```
   There is a password `ft_wandrNDRelL0L` but it's not the flag
   ```bash
-  > tshark -r /test/level02.pcap -T fields -e ip.src -e ip.dst -e tcp.payload
+  > tshark -r /Flag02/level02.pcap -T fields -e ip.src -e ip.dst -e tcp.payload
   
   59.233.235.223	59.233.235.218	000d0a50617373776f72643a20  # mean password in ASCII
   59.233.235.218	59.233.235.223	
