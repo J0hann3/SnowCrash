@@ -1,5 +1,4 @@
 # Level 00
-- Password level00: `level00`
 ## Step by step
 - Find all the files on the Vm that are owned by `flag00`
 ```bash
