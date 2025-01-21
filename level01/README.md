@@ -1,6 +1,7 @@
 # Level01
 ## Step by step
-- Search in every regular files if it contains the word `flag01`
+### 1. Search for files containing `flag01`
+Use the `find` command to search for all regular files containing the word `flag01`. Suppress errors by redirecting them to `/dev/null`:
 ```bash
 > find / -type f -exec grep -H "flag01" {} + 2>/dev/null
 
@@ -13,15 +14,31 @@ Binary file /proc/2147/cmdline matches
 /rofs/etc/group:flag01:x:3001:
 /rofs/etc/passwd:flag01:42hDRfypTqqnw:3001:3001::/home/flag/flag01:/bin/bash
 ```
-- In the file `/etc/passwd` there is the hash of the password
+The file `/etc/passwd` contains a hash for `flag01`.
+
+---
+
+### 2. Extract the hash from `/etc/passwd`
+The relevant line from `/etc/passwd` is:
 ```
 flag01:42hDRfypTqqnw:3001:3001::/home/flag/flag01:/bin/bash
 ```
-- Download the file `/etc/passwd` on my machine with `SCP`
+The hash is `42hDRfypTqqnw`.
+
+---
+
+### 3. Download the file to your local machine
+Use `scp` to securely copy the `/etc/passwd` file to your local machine. Replace `level01@127.0.0.1` with your actual username and IP if necessary:
+
 ```bash
 > scp -P 4243 level01@127.0.0.1:/etc/passwd .
 ```
-- Using `John the Ripper` to decrypt the password
+
+---
+
+### 4. Crack the hash using `John the Ripper`
+Run a Docker container with a Debian image to install and use `John the Ripper`:
+
 ```bash
 > docker run --rm -it --name SnowCrashFlag01 -v ${PWD}:/Password debian bash
 > apt update; apt install john -y
@@ -31,4 +48,7 @@ flag01:abcdefg:3001:3001::/home/flag/flag01:/bin/bash
 
 1 password hash cracked, 0 left
 ```
-- Flag01 is `abcdefg`
+---
+
+### 5. Conclusion
+The flag for `flag01` is:
