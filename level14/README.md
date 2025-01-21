@@ -1,10 +1,15 @@
 # Level14
 ## Step by step
-- The user `level14` home directory is empty, and there is nothing on the VM that it's own by him or flag14
+### 1. Navigate to the `level14` Home Directory
   ```bash
   > ls -la
   ```
-- The ony solution is to reverse engineering the binary `getflag` with GDB
+You’ll notice it is empty, and there is nothing related to `flag14` or other resources that belong to `level14`.
+
+---
+### 2. Reverse Engineering the getflag Binary
+
+The only solution is to reverse engineer the getflag binary using GDB:
   ```bash
   > id flag14
   uid=3014(flag14) gid=3014(flag14) groups=3014(flag14),1001(flag)
