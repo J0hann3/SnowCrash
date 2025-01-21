@@ -1,16 +1,25 @@
 # Level13
 ## Step by step
-- In the user `level13` home directory, there is a file
+### 1. Access the `level13` Home Directory
   ```bash
   > ls
   -rwsr-sr-x 1 flag13  level13 7303 Aug 30  2015 level13
   ```
--  The executable print the following when running
+
+---
+### 2. Understanding the `level13` Program
+
+When you run the `level13` executable, it prints:
   ```bash
   > ./level13
   UID 2013 started us but we we expect 4242
   ```
-- Lets change our UID to 4242, using GDB
+The goal is to change the UID from 2013 to 4242.
+
+---
+### 3. Debugging with GDB
+
+Start `gdb` to debug the program:
   ```bash
   > gdb ./level13
   > start
