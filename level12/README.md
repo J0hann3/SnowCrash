@@ -51,5 +51,4 @@
 
   > cat /tmp/flag
   Check flag.Here is your token : XXX
-```
-  
+  ```
