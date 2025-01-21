@@ -1,21 +1,35 @@
 # Level02
 ## Step by step
-- In the user `level02` home directory, there is a file
+### 1. Locate the file in the `level02` home directory
   ```bash
   > ls
   level02.pcap
   ```
-- The `.pcap` is an abreviation for `packet capture`, PCAP files store network data gathered by the network-traffic-capturing program tcpdump
-- Download the file in my machine
+The file `level02.pcap` is present. This is a **Packet Capture** file, which stores network data captured by tools like `tcpdump`.
+
+---
+
+### 2. Download the file to your local machine
+Use `scp` to securely copy the `level02.pcap` file to your local machine. Adjust the IP address and port as necessary:
+
   ```bash
   > scp -P 4243 level02@127.0.0.1:~/level02.pcap .
   ```
-- Use Docker to download  `tshark` and `xxd`
+
+---
+
+### 3. Set up a Docker container for analysis
+To analyze the `.pcap` file, you need tools like `tshark` and `xxd`. Set up a Docker container with these utilities:
+
   ```bash
   > docker run --rm -it --name SnowCrashFlag02 -v ${PWD}:/Flag02 debian bash
   > apt update; apt install tshark -y; apt install xxd -y
   ```
-- With the command `tshark`, I parse data send in the communications
+
+---
+
+### 4. Analyze the `.pcap` file using `tshark`
+First, parse the network data in the file:
   ```bash
   > tshark -r /Flag02/level02.pcap -T fields -e tcp.payload | xxd -r -p
 
@@ -32,7 +46,10 @@
   Login incorrect
   wwwbugs login: 
   ```
-  There is a password `ft_wandrNDRelL0L` but it's not the flag
+This reveals a password-like string, `ft_wandrNDRelL0L`, but it is not the flag.
+
+Next, analyze the source and destination IPs and payloads:
+
   ```bash
   > tshark -r /Flag02/level02.pcap -T fields -e ip.src -e ip.dst -e tcp.payload
   
@@ -86,5 +103,9 @@
   59.233.235.218	59.233.235.223	
   59.233.235.223	59.233.235.218	000d0a4c6f67696e20696e636f72726563740d0a77777762756773206c6f67696e3a20
   ```
-  After removing every character delete, the password is `ft_waNDRelL0L`
-- Flag02 is `ft_waNDRelL0L`
+The hexadecimal payload can be converted to ASCII to reveal the password. After removing delete characters (`7f`), the reconstructed password is:
+
+```
+ft_waNDRelL0L
+```
+
