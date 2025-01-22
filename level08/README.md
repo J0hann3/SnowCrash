@@ -2,7 +2,7 @@
 ## Step by step
 ### 1. Locate files in `level08` home directory
   ```bash
-  > ls
+  > ls -la
   -rwsr-s---+ 1 flag08  level08 8617 Mar  5  2016 level08
   -rw-------  1 flag08  flag08    26 Mar  5  2016 token
   ```
