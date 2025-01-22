@@ -2,7 +2,7 @@
 ## Step by step
 ### 1. Access the `level10` Home Directory
   ```bash
-  > ls
+  > ls -la
   -rwsr-sr-x+ 1 flag10  level10 10817 Mar  5  2016 level10
   -rw-------  1 flag10  flag10     26 Mar  5  2016 token
   ```
