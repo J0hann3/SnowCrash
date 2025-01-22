@@ -48,7 +48,3 @@ flag01:abcdefg:3001:3001::/home/flag/flag01:/bin/bash
 
 1 password hash cracked, 0 left
 ```
----
-
-### 5. Conclusion
-The flag for `flag01` is:
