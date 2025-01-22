@@ -2,7 +2,7 @@
 ## Step by step
 ### 1. Access the `level11` Home Directory
   ```bash
-  > ls
+  > ls -la
   -rwsr-sr-x  1 flag11  level11  668 Mar  5  2016 level11.lua
   ```
 ---
