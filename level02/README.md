@@ -106,6 +106,6 @@ Next, analyze the source and destination IPs and payloads:
 The hexadecimal payload can be converted to ASCII to reveal the password. After removing delete characters (`7f`), the reconstructed password is:
 
 ```
-ft_waNDRelL0L
+ft_waNDReL0L
 ```
 
