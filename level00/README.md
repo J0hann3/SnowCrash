@@ -7,6 +7,7 @@
 /rofs/usr/sbin/john
 ```
 We find two paths pointing to a file named `john`.
+
 ---
 
 ### 2. Inspect the files
@@ -43,8 +44,3 @@ Decrypted result:
 ```
 nottoohardhere
 ```
-
----
-
-### 6. Conclusion
-The flag for `flag00` is:
