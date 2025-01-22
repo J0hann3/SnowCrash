@@ -2,7 +2,7 @@
 ## Step by step
 ### 1. Locate files in `level07` home directory
   ```bash
-  > ls
+  > ls -la
   -rwsr-sr-x 1 flag07  level07 8805 Mar  5  2016 level07
   ```
 ---
